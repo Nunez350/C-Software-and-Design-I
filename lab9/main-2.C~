@@ -1,0 +1,76 @@
+
+/*
+
+
+Input a character from the user, and then additional parameters depending on the shape (e.g., the width and height). If the user inputs an illegal character, output an error message and retry.
+
+3    Call the appropriate functon
+  4    Goto 1. Of course, you're not allowed to use the goto construct, so you should formulate this as a loop.
+  Do not include prototypes for called functions in this file (see next step). 
+need to specify prototypes for the draw functions in main; however, in general you may need to specify the prototype for some function in multiple other functions/files. Rather than typing the prototype of a function in each of the function's callers, it is better to specify prototypes common to your project in a header (.h) file. To do this, create a file called lab9.h containing prototypes for all common functions. You will need to specify an extern storage class since these are defined in other files. For example, one line might be:
+extern void drawRectFrame(int width, int height);
+Note that the "extern" is not needed strictly speaking, since that is the default storage class for function prototypes. However,  most consider it good style to explicitly mention. 
+
+Since main uses the prototypes in this file, you will also need to have the following at the top of each source file that uses one of these:
+#include "lab9.h"
+
+
+
+*/
+
+
+#include <iostream>
+#include <cmath> 
+#include <string>
+#include "lab9.h"
+using namespace std;
+
+
+int main() 
+{
+  string input;
+  string rec,x,lowt,uppt,cir;
+
+  do {
+    cout <<"Please enter rec, x,or pix to pick the corresponding shape or enter q to quit" <<endl;
+    cout <<"(rec = Rectangle)"<<endl;
+    cout <<"(x = X Shape)"<<endl;
+    cout <<"(pix = Pixel)"<<endl;
+    cout<<endl;
+    cin>>input;
+
+
+  if (input == "rec") {
+    int width, height;
+    cout<<"Please Enter a Width for Rectangular Frame (Must be 2 or Greater)"<<endl;
+    cin  >> width;
+    cout << "Please Enter a Height for Rectangular Frame (Must be 2 or Greater)"<<endl;
+    cin  >> height;
+    drawRect(width, height);
+
+  } else if (input =="x") {
+    int length;
+    cout << "Please Enter an Integer for a Length for your X-Shape (Must Greater than 0)"<<endl;
+    cin  >> length;
+    while (length<=0)
+      { cout << "Please Enter an Integer for a Length for your X-Shape (Must Greater than 0)"<<endl;
+	cin  >> length;
+      }
+    drawX(length);
+  } else if (input == "pix") {
+    char c = '*';
+    drawPix(c);
+  } else {
+    if (input != "q") { 
+    cout<<"This is not valid input!!!"<<endl<<endl;
+    }
+  }
+  }while (input != "q");
+  return 0;
+}
+
+
+//  while(input != "rec" || input != "x" || input != "lowt" || input != "pix") {
+//  cin>>input;
+//}
+

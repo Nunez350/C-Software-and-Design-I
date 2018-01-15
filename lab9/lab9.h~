@@ -1,0 +1,15 @@
+
+
+
+extern void drawX(int length);
+
+extern void drawRect(int length, int height);
+
+extern void drawPix(char c);
+
+
+
+
+
+
+

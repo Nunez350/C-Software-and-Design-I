@@ -1,0 +1,41 @@
+OVERVIEW
+
+In this lab, you will process data whose size is not known statically. Thus, you will need to use pointers. The processing will be on the same dataset as lab 10.
+
+TASKS
+
+Task 0:
+
+We will represent the dataset from before as a list, with the following definition:
+
+struct CountryData {
+  string name;
+  double pop1950;
+  double pop1970;
+  double pop1990;
+  double pop2010;
+  double pop2015;
+};
+struct Node {
+  CountryData country;
+  Node *      next;
+};
+In the previous lab you wrote a function to read from the data file and store into an array of structs. This time, you should read from the data file and store into the above list of structs. 
+
+The obvious algorithm to do this is:
+
+Create empty list by setting Node *world = NULL; 
+while more data exists
+  read line from file
+  create a new Node N, and store line data into N
+  Make N's next link point to the world (as known so far)
+  set world =  N
+After writing the above code, you may wish to use ddd to check what world looks like (use a small world, by deleting all but a few lines of the data file while testing!).
+
+Task 1:
+
+You wish to create an array of all countries with a population between m and n (as of 2015), where m and n are numbers input from the user. Since you don't know how many countries this will result in, you will need to make this a dynamic array (lists or vectors would work too, but thats not the point of this lab).  
+
+Write a function that has as arguments m, n, and the list, and returns the array. The function should traverse the list to create an array of all countries that have 2015 populations between m and n inclusive. A 2-pass algorithm might be the simplest solution (1 pass to find the size, and 1 to populate the array). Finally, the function should print the resulting list of countries. 
+
+Also write a driver main program that prompts the user for m and n and then calls the function. Make sure your code is written to avoid memory leaks (i.e., delete any heap data).
